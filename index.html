@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Untitled Ragdoll Game by Pleiterdude - itch.io</title>
+  <style>
+    /* itch.io Color Scheme & Layout Baseline */
+    :root {
+      --bg-color: #1f1f23;
+      --panel-bg: #2d2d31;
+      --text-color: #dadada;
+      --text-bright: #ffffff;
+      --accent-color: #ff2449; /* itch.io pink/red signature accent */
+      --tag-bg: #38383c;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Top Global itch.io Navigation Strip */
+    .itch-nav {
+      background-color: #141416;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #141416;
+    }
+
+    .itch-nav .logo-area {
+      font-weight: bold;
+      color: var(--text-bright);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .itch-nav a {
+      color: #98989d;
+      text-decoration: none;
+      margin-left: 15px;
+    }
+
+    .itch-nav a:hover {
+      color: var(--text-bright);
+    }
+
+    /* Project Main Dashboard Area */
+    .project-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .project-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Header Logo Presentation */
+    .game-header {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .game-header img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Embedded Internal Navigation Bar */
+    .tab-container {
+      grid-column: 1 / -1;
+      border-bottom: 1px solid #333;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+
+    .tab-bar {
+      display: flex;
+      gap: 10px;
+    }
+
+    .tab-item {
+      background-color: var(--panel-bg);
+      color: var(--text-bright);
+      padding: 8px 16px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      border: 1px solid #3a3a3e;
+    }
+
+    .tab-item:hover {
+      background-color: #38383c;
+    }
+
+    .tab-item.active {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+    }
+
+    /* Main Left Description Column */
+    .main-column {
+      background-color: var(--panel-bg);
+      padding: 30px;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .main-column h2 {
+      margin-top: 0;
+      color: var(--text-bright);
+    }
+
+    .btn-play {
+      background-color: var(--accent-color);
+      color: var(--text-bright);
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 4px;
+      display: inline-block;
+      text-decoration: none;
+      margin: 20px 0;
+      box-shadow: 0 4px 0 #bd1330;
+      transition: transform 0.1s;
+    }
+
+    .btn-play:active {
+      transform: translateY(4px);
+      box-shadow: none;
+    }
+
+    /* Sidebar Right Column metadata panel */
+    .sidebar-panel {
+      background-color: var(--panel-bg);
+      padding: 20px;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      align-self: start;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #38383c;
+    }
+
+    .meta-row:last-child {
+      border-bottom: none;
+    }
+
+    .meta-label {
+      color: #98989d;
+    }
+
+    .meta-value {
+      color: var(--text-bright);
+      font-weight: 500;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 15px;
+    }
+
+    .game-tag {
+      background-color: var(--tag-bg);
+      color: var(--text-color);
+      padding: 4px 10px;
+      border-radius: 3px;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Global Header Menu -->
+  <div class="itch-nav">
+    <a href="#" class="logo-area">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:var(--accent-color);"><path d="M21.2 5c-1.1-1.2-4.1-2-6.5-2-1.9 0-3.3.5-3.3.5s-1.4-.5-3.3-.5c-2.4 0-5.4.8-6.5 2C.5 6.2 0 8.5 0 11.2c0 3.3.9 6.2 4.7 7.7.4.2.8.1 1-.2l2.3-2.9c.2-.2.5-.3.8-.3h6.4c.3 0 .6.1.8.3l2.3 2.9c.2.3.6.4 1 .2 3.8-1.5 4.7-4.4 4.7-7.7C24 8.5 23.5 6.2 21.2 5zM7 13c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm10 0c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+      itch.io
+    </a>
+    <div>
+      <a href="#">Browse Games</a>
+      <a href="#">Community</a>
+      <a href="#">Log in</a>
+    </div>
+  </div>
+
+  <!-- Primary Project Workspace Container -->
+  <div class="project-container">
+    
+    <!-- Centered Logo Area Layout -->
+    <div class="game-header">
+      <img src="URG.png" alt="Untitled Ragdoll Game Logo">
+    </div>
+
+    <!-- Layout Navigation Tabs -->
+    <div class="tab-container">
+      <div class="tab-bar">
+        <a href="index.html" class="tab-item active">Overview</a>
+        <a href="untitledragdollgame.html" class="tab-item">Run Game</a>
+      </div>
+    </div>
+
+    <!-- Description Block -->
+    <div class="main-column">
+      <h2>Untitled Ragdoll Game (real one)</h2>
+      <p>Welcome to the project sandbox environment directory. This build implements real-time online syncing alongside alternative physical interactions within the testing map environment.</p>
+      
+      <p align="center">
+        <a href="untitledragdollgame.html" class="btn-play">Run Game In Browser</a>
+      </p>
+
+      <h3>Features Overview</h3>
+      <ul>
+        <li><b>Multiplayer Mechanics:</b> Real-time network sync channels map layout nodes immediately.</li>
+        <li><b>Sandbox Toolkit:</b> Access modular blueprints directly to modify dynamic obstacles.</li>
+        <li><b>Optimized Canvas Layout:</b> Smooth performance frameworks deployed directly to WebGL views.</li>
+      </ul>
+    </div>
+
+    <!-- Sidebar Technical Properties Meta Column -->
+    <div class="sidebar-panel">
+      <div class="meta-row">
+        <span class="meta-label">Status</span>
+        <span class="meta-value">Released</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Author</span>
+        <span class="meta-value">Pleiterdude</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Platform</span>
+        <span class="meta-value">HTML5 (Web)</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Multiplayer</span>
+        <span class="meta-value">Yes (Online)</span>
+      </div>
+
+      <div class="tag-cloud">
+        <span class="game-tag">#Multiplayer</span>
+        <span class="game-tag">#Sandbox</span>
+        <span class="game-tag">#Ragdoll</span>
+        <span class="game-tag">#Indie</span>
+        <span class="game-tag">#Physics</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
+
+
+
